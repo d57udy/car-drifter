@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1a1a2e;
+}
+
+#game-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#game-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Touch Controls */
+#touch-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+  display: none; /* Hidden by default, shown on touch devices */
+}
+
+#left-controls, #right-controls {
+  display: flex;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+#right-controls {
+  flex-direction: column;
+}
+
+.control-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: background 0.1s;
+}
+
+.control-btn:active,
+.control-btn.pressed {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+#btn-gas {
+  background: rgba(76, 175, 80, 0.4);
+  border-color: rgba(76, 175, 80, 0.8);
+}
+
+#btn-gas:active,
+#btn-gas.pressed {
+  background: rgba(76, 175, 80, 0.7);
+}
+
+#btn-brake {
+  background: rgba(244, 67, 54, 0.4);
+  border-color: rgba(244, 67, 54, 0.8);
+}
+
+#btn-brake:active,
+#btn-brake.pressed {
+  background: rgba(244, 67, 54, 0.7);
+}
+
+/* HUD */
+#hud {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+#speed-display {
+  background: rgba(0, 0, 0, 0.6);
+  color: #00ff88;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+#instructions {
+  background: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+/* Show touch controls on touch devices */
+@media (pointer: coarse) {
+  #touch-controls {
+    display: flex;
+  }
+
+  #instructions {
+    display: none;
+  }
+}
+
+/* Larger buttons on tablets */
+@media (min-width: 768px) and (pointer: coarse) {
+  .control-btn {
+    width: 90px;
+    height: 90px;
+    font-size: 22px;
+  }
+}
